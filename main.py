@@ -8,6 +8,8 @@ app = Flask(__name__)
 def before_request():
     logging.info(request.headers)
     logging.info(request.values)
+    if 'application/json' in request.headers['Content-Type']:
+        logging.info(request.json)
 
 @app.route('/')
 def index():
